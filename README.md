@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+Ejercitacion:
+-------------------------------------------------------
+1- Instalar React en un repositorio local
+2- Crear un componente que muestre un mensaje saludando al usuario
+3- Crear un componente que muestre un contador con dos botones (sumar y restar)
+- Sostener en un estado el contador del usuario
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NOTA: Usaremos el hook ueState para sostener el estado del componente.
+NOTA: En clase podemos realizar el ejercicio en un solo componente (archivo), y posteriormente componetizarlo.
+-------------------------------------------------------
+1 Construyamos nuestra primera aplicación en React
+Create react app: Comandos de consola: npx create-react-app my-app-name
+import React from 'react';
+function App() {
+  return (
+    <div>
+      <Saludo />
+    <div/>
+  );
+}
+-------------------------------------------------------
+2Componentes funcionales
+function Saludo() {
+        return <h1>Hola!</h1>
+    }
 
-## Available Scripts
+    export default Saludo
 
-In the project directory, you can run:
+-------------------------------------------------------
+3Reutilización de componentes
+- Podemos reutilizar componentes para crear componentes que se repiten en nuestra aplicación.
+- Al ser funciones comprendemos que podemos recibir propiedades y utilizarlas
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+import Saludo from './Saludo'
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    function SaludarAMuchos() {
+        return (
+            <div>
+                <Saludo nombre="Juan" />
+                <Saludo nombre="Pedro" />
+                <Saludo nombre="Luis" />
+            </div>
+        )
+    }
+    function Saludo({nombre}) {
+        return <h1>Hola ${nombre}!</h1>
+    }
 
-### `npm test`
+    export default Saludo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-------------------------------------------------------
+4 Crear un componente que muestre un contador
+import React, { useState } from 'react';
 
-### `npm run build`
+function Counter() {
+  const [count, setCount] = useState(0);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
