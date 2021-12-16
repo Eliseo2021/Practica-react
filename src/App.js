@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
 
+function Titulo({title, isLink}) {
+  if (isLink) {
+    return (
+      <a href='#' className='titulo__a'>
+        {title}
+      </a>
+    );
+  } else {
+    return <h1>{title}</h1>;
+  }
+}
+
+
 function Saludo({nombre, apellido, edad}) {
   const inLineStyle = {
     backgroundColor: '#333',
@@ -27,10 +40,9 @@ function Counter() {
  const [count, setCount] = useState(0); //inicio de estado: puede ser cualquier dato.
   return (
     <div>
-    <p> clickeaste: {count}</p>
-    <button onClick={() => setCount(count + 1)}>
-        Click Aqui!
-    </button>
+      <p> clickeaste cantidad de veces: {count}</p>
+      <button onClick={() => setCount(count + 1)}> + </button>
+      <button onClick={() => setCount(count - 1)}> - </button>
     </div>
   );
 }
@@ -38,7 +50,8 @@ function Counter() {
 function App() {
   return (
     <>
-      <h1>Hola React</h1>
+      <Titulo title={"Hola React"}/>
+      <Titulo title={"un link"} isLink={true} />
       <SaludarAMuchos />
       <Counter />
     </>
