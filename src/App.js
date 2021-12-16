@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Saludo({nombre, apellido, edad}) {
   const inLineStyle = {
@@ -22,13 +22,25 @@ function SaludarAMuchos() {
   )
 }
 
-
+function Counter() {
+  /* useState: un objeto con dos elementos [count, setCount]  */
+ const [count, setCount] = useState(0); //inicio de estado: puede ser cualquier dato.
+  return (
+    <div>
+    <p> clickeaste: {count}</p>
+    <button onClick={() => setCount(count + 1)}>
+        Click Aqui!
+    </button>
+    </div>
+  );
+}
 
 function App() {
   return (
     <>
       <h1>Hola React</h1>
       <SaludarAMuchos />
+      <Counter />
     </>
   );
 };
